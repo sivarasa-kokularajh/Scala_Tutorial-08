@@ -1,0 +1,65 @@
+//01
+object InterestCalculator 
+{
+  def calculateInterest(depositAmount: Double): Double = 
+  {
+    val interestRate = 
+      if (depositAmount <= 20000) 0.02
+      else if (depositAmount <= 200000) 0.04
+      else if (depositAmount <= 2000000) 0.035
+      else 0.065
+      
+    val interest = depositAmount * interestRate
+    interest
+  }
+  def main(args: Array[String]): Unit = 
+  {
+    val depositAmount = 250000 
+    val interest = calculateInterest(depositAmount)
+    println(s"The interest earned on Rs. $depositAmount deposit is Rs. $interest")
+  }
+}
+
+//02
+object NumberPatternMatching {
+  def main(args: Array[String]): Unit = {
+    if (args.length == 1) {
+      val input = args(0).toInt
+      val result = input match {
+        case n if n <= 0 => "Negative/Zero is input"
+        case n if n % 2 == 0 => "Even number is given"
+        case n if n % 2 != 0 => "Odd number is given"
+      }
+      println(result)
+    } else {
+      println("Please provide a single integer input.")
+    }
+  }
+}
+
+//03
+object StringFormatting {
+  def toUpper(input: String): String = {
+    input.toUpperCase()
+  }
+  
+  def toLower(input: String): String = {
+    input.toLowerCase()
+  }
+  
+  def formatNames(name: String, formatFunction: String => String): String = {
+    formatFunction(name)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val names = List("Benny", "Niroshan", "Saman", "Kumara")
+    
+    for (name <- names) {
+      val upperCaseName = formatNames(name, toUpper)
+      val lowerCaseName = formatNames(name, toLower)
+      println(upperCaseName)
+      println(lowerCaseName)
+      println()
+    }
+  }
+}
